@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://objects/Grid.gd" type="Script" id=1]
+
+[node name="Grid" type="YSort" groups=["Grid"]]
+script = ExtResource( 1 )
+size = Vector2( 5, 5 )

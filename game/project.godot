@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "AnimatedSprite",
+"class": "GridObject",
+"language": "GDScript",
+"path": "res://objects/GridObject.gd"
+} ]
+_global_script_class_icons={
+"GridObject": ""
+}
+
 [application]
 
 config/name="GWJ-52"
