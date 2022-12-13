@@ -6,7 +6,7 @@ var rect_scale = Vector2(20, 14)
 
 var half_size = size * rect_scale / 2
 
-var mouse_offset = rect_scale/2
+var offset = rect_scale/2
 
 const BACK_COLOR : Color = Color("141013")
 const GRID_COLOR : Color = Color("221c1a")
@@ -21,6 +21,8 @@ func _ready():
 	for entity in get_tree().get_nodes_in_group("grid_object"):
 		snap_to_position(entity, entity.position)
 	half_size = size * rect_scale / 2
+	for light in get_tree().get_nodes_in_group("light"):
+		light.populate(0, light.grid_position)
 
 func _draw():
 	var area = Rect2(-half_size, size * rect_scale)
@@ -46,10 +48,14 @@ func snap_block_to_position(block : Node2D):
 		snap_to_position(block, mouse_pos)
 
 func snap_to_position(entity : Node2D, pos : Vector2):
-	pos -= Vector2(rect_scale.x/(int(size.x) % 2 + 1), rect_scale.y/(int(size.y) % 2 + 1)) + mouse_offset
+	var off_y_set_y_thing = Vector2(rect_scale.x/(int(size.x) % 2 + 1), rect_scale.y/(int(size.y) % 2 + 1)) + offset
+	pos -= off_y_set_y_thing
 	entity.position = Vector2(
 			stepify(pos.x, rect_scale.x),
 			stepify(pos.y, rect_scale.y)
-		) + Vector2(rect_scale.x/(int(size.x) % 2 + 1), rect_scale.y/(int(size.y) % 2 + 1)) + mouse_offset
-	var index = (entity.position + half_size) / rect_scale
-	grid[entity] = index
+		) + off_y_set_y_thing
+	var index = (entity.position - half_size) / rect_scale + (size / 2)
+	entity.grid_position = index
+	grid.clear()
+	for entity_ in get_tree().get_nodes_in_group("grid_object"):
+		grid[entity_.grid_position] = entity_
