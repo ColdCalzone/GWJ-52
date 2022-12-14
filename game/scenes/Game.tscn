@@ -6,48 +6,48 @@
 [ext_resource path="res://objects/Ghost.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/Spotlight.tscn" type="PackedScene" id=6]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["Game"]]
 script = ExtResource( 3 )
 
 [node name="Grid" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )
+size = Vector2( 6, 5 )
 
 [node name="MirrorBlock" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 0, 28 )
+position = Vector2( 70, 63 )
 
 [node name="MirrorBlock2" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 40, 28 )
+position = Vector2( 110, 63 )
 
 [node name="MirrorBlock3" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 40, -14 )
+position = Vector2( 110, 21 )
 region_rect = Rect2( 64, 0, 32, 32 )
 state = 1
 
 [node name="MirrorBlock4" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 20, -14 )
+position = Vector2( 90, 21 )
 
 [node name="MirrorBlock6" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( -40, -28 )
+position = Vector2( 30, 7 )
 
 [node name="MirrorBlock7" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( -40, 28 )
+position = Vector2( 30, 63 )
 
 [node name="MirrorBlock5" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 20, 0 )
+position = Vector2( 90, 35 )
 
 [node name="Ghost" parent="Grid" instance=ExtResource( 5 )]
-position = Vector2( -20, 28 )
-animation = "heart"
-frame = 0
-hit_by_beam = true
+position = Vector2( 50, 63 )
+frame = 1
 
 [node name="Spotlight" parent="Grid" instance=ExtResource( 6 )]
-position = Vector2( -60, 28 )
+position = Vector2( -10, 63 )
 animation = "right"
 direction = 3
 
 [node name="Spotlight2" parent="Grid" instance=ExtResource( 6 )]
-position = Vector2( 0, 42 )
+position = Vector2( 70, 77 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 121, 72 )
 current = true

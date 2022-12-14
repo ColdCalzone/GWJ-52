@@ -8,6 +8,7 @@ export(LightState) var light_state = LightState.OFF
 enum Direction {UP, DOWN, LEFT, RIGHT}
 
 onready var grid = get_tree().get_nodes_in_group("Grid")[0]
+onready var game = get_tree().get_nodes_in_group("Game")[0]
 
 var grid_position : Vector2 = Vector2(2, 5)
 
@@ -30,8 +31,8 @@ func set_orientation(state : int):
 func populate(direction : int, grid_pos : Vector2):
 	set_orientation(direction)
 	var impacted : bool = false
-	if grid.grid.has(grid_pos):
-		var entity = grid.grid[grid_pos]
+	if game.grid_objects.has(grid_pos):
+		var entity = game.grid_objects[grid_pos]
 		if entity is MirrorBlock:
 			match [direction, entity.state]:
 				[0, 0]:
@@ -56,7 +57,7 @@ func populate(direction : int, grid_pos : Vector2):
 		if entity is Ghost:
 			entity.hit_by_beam = true
 	self.grid_position = grid_pos
-	position = grid_position * grid.rect_scale - grid.half_size
+	position = grid_position * grid.rect_scale
 	var next = self.duplicate()
 	get_parent().add_child(next)
 	var next_pos : Vector2
