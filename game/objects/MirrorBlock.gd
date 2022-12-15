@@ -7,7 +7,7 @@ var being_dragged : bool = false
 var delay = 0.150
 
 enum States {RIGHT, LEFT}
-enum LightStates {NONE, BOTTOM, TOP, BOTH}
+enum LightStates {NONE, BOTTOM = 1, TOP = 2, BOTH = 3}
 
 export(States) var state = States.RIGHT
 export(LightStates) var light_state = LightStates.NONE
@@ -66,7 +66,7 @@ func _input(event):
 
 # from direction is 1 or 2 (Bottom or Top in LightStates) and returns the direction the light will bounce to
 func reflect_light(from_direction : int):
-	light_state += from_direction
+	light_state |= from_direction
 	match [light_state, state]:
 		[LightStates.BOTTOM, States.RIGHT]: 
 			region_rect.position = Vector2(0, 64 + (32 * int(ungrabbable)))

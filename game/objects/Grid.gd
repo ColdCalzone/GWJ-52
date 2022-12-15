@@ -50,17 +50,16 @@ func snap_block_to_position(block : Node2D):
 		if Vector2.ZERO < block.position and block.position < rect_scale * size:
 			snap_to_position(block)
 	if block is Spotlight:
-		if (block.position.x >= 0 or block.position.x <= size.x * rect_scale.x) and (
+		if (block.position.x > 0 and block.position.x < size.x * rect_scale.x) and (
 			(block.position.y > size.y * rect_scale.y and block.position.y < (size.y + 1) * rect_scale.y) or
 			(block.position.y < 0 and block.position.y > -rect_scale.y)):
 				block.change_direction(0 if block.position.y > 0 else 2)
 				snap_to_position(block)
-		elif (block.position.y >= 0 or block.position.y <= size.y * rect_scale.y) and (
+		elif (block.position.y >= 0 and block.position.y <= size.y * rect_scale.y) and (
 			(block.position.x < 0 and block.position.x > -rect_scale.x) or
 			(block.position.x > size.x * rect_scale.x and block.position.x < (size.x + 1) * rect_scale.x)):
 				block.change_direction(3 if block.position.x > 0 else 1)
 				snap_to_position(block)
-	print(block.grid_position)
 
 func snap_to_position(entity : Node2D):
 	var pos = entity.position + rect_scale/2
