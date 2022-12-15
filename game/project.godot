@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "MirrorBlock",
 "language": "GDScript",
 "path": "res://objects/MirrorBlock.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "Spotlight",
+"language": "GDScript",
+"path": "res://objects/Spotlight.gd"
 } ]
 _global_script_class_icons={
 "Ghost": "",
 "GridObject": "",
-"MirrorBlock": ""
+"MirrorBlock": "",
+"Spotlight": ""
 }
 
 [application]

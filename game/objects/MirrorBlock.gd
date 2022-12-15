@@ -84,3 +84,12 @@ func reflect_light(from_direction : int):
 			region_rect.position.y = 32 * int(ungrabbable)
 			region_rect.position.x = 64 * int(state)
 			light_state = LightStates.NONE
+
+func die():
+	pass
+
+func populate(_n, _a):
+	pass
+
+func set_light_state(light : int):
+	pass # TODO

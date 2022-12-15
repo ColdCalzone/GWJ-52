@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://sprites/spotlight_right.tres" type="Texture" id=1]
 [ext_resource path="res://sprites/spotlight_up.tres" type="Texture" id=2]
@@ -83,10 +83,43 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 12, 7 )
+
+[sub_resource type="RectangleShape2D" id=18]
+extents = Vector2( 9, 11 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 12, 11.5 )
+
 [node name="Spotlight" type="AnimatedSprite" groups=["grid_object", "spotlight"]]
 frames = SubResource( 1 )
 animation = "up"
 offset = Vector2( 1, -6 )
 script = ExtResource( 4 )
 
+[node name="UpClick" type="Area2D" parent="."]
+position = Vector2( 1, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpClick"]
+position = Vector2( 0, 3 )
+shape = SubResource( 17 )
+
+[node name="RightClick" type="Area2D" parent="."]
+position = Vector2( 1, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightClick"]
+position = Vector2( -7, -6 )
+shape = SubResource( 18 )
+
+[node name="DownClick" type="Area2D" parent="."]
+position = Vector2( 1, -8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownClick"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 19 )
+
 [connection signal="frame_changed" from="." to="." method="_on_Spotlight_frame_changed"]
+[connection signal="input_event" from="UpClick" to="." method="_on_Click_input_event"]
+[connection signal="input_event" from="RightClick" to="." method="_on_Click_input_event"]
+[connection signal="input_event" from="DownClick" to="." method="_on_Click_input_event"]

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.5, 9 )
 
-[node name="MirrorBlock" type="Sprite" groups=["grid_object", "mirror_blocks"]]
+[node name="MirrorBlock" type="Sprite" groups=["grid_object", "light", "mirror_blocks"]]
 texture = ExtResource( 1 )
 offset = Vector2( 1, -5 )
 region_enabled = true

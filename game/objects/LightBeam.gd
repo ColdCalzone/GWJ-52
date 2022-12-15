@@ -5,12 +5,14 @@ enum LightState {OFF, SMALL, MEDIUM, ON}
 
 export(LightState) var light_state = LightState.OFF
 
-enum Direction {UP, DOWN, LEFT, RIGHT}
+enum Direction {UP, RIGHT, DOWN, LEFT}
 
 onready var grid = get_tree().get_nodes_in_group("Grid")[0]
 onready var game = get_tree().get_nodes_in_group("Game")[0]
 
 var grid_position : Vector2 = Vector2(2, 5)
+
+var parent_spotlight : Node2D
 
 var time = 0.0
 
@@ -35,22 +37,22 @@ func populate(direction : int, grid_pos : Vector2):
 		var entity = game.grid_objects[grid_pos]
 		if entity is MirrorBlock:
 			match [direction, entity.state]:
-				[0, 0]:
+				[Direction.UP, 0]:
 					entity.reflect_light(1)
 					direction = Direction.RIGHT
-				[1, 1]:
+				[Direction.DOWN, 1]:
 					entity.reflect_light(2)
 					direction = Direction.RIGHT
-				[3, 0], [2, 1]: 
+				[Direction.RIGHT, 0], [Direction.LEFT, 1]: 
 					entity.reflect_light(2)
 					direction = Direction.UP
-				[3, 1], [2, 0]: 
+				[Direction.RIGHT, 1], [Direction.LEFT, 0]: 
 					entity.reflect_light(1)
 					direction = Direction.DOWN
-				[0, 1]:
+				[Direction.UP, 1]:
 					entity.reflect_light(1)
 					direction = Direction.LEFT
-				[1, 0]: 
+				[Direction.DOWN, 0]: 
 					entity.reflect_light(2)
 					direction = Direction.LEFT
 			impacted = true
@@ -59,6 +61,7 @@ func populate(direction : int, grid_pos : Vector2):
 	self.grid_position = grid_pos
 	position = grid_position * grid.rect_scale
 	var next = self.duplicate()
+	next.parent_spotlight = parent_spotlight
 	get_parent().add_child(next)
 	var next_pos : Vector2
 	match direction:
@@ -75,3 +78,6 @@ func populate(direction : int, grid_pos : Vector2):
 	next.populate(direction, next_pos)
 	if impacted:
 		queue_free()
+
+func die():
+	queue_free()
