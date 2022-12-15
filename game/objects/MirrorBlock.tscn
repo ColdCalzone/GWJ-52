@@ -4,7 +4,7 @@
 [ext_resource path="res://objects/MirrorBlock.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.5, 9 )
+extents = Vector2( 10.5, 7 )
 
 [node name="MirrorBlock" type="Sprite" groups=["grid_object", "light", "mirror_blocks"]]
 texture = ExtResource( 1 )
@@ -14,11 +14,10 @@ region_rect = Rect2( 0, 0, 32, 32 )
 script = ExtResource( 2 )
 
 [node name="ClickArea" type="Area2D" parent="."]
-visible = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-position = Vector2( 0.5, -1 )
+position = Vector2( 0.5, -3 )
 shape = SubResource( 1 )
 
-[connection signal="input_event" from="ClickArea" to="." method="_on_ClickArea_input_event"]
+[connection signal="input_event" from="ClickArea" to="." method="_on_Click_input_event"]

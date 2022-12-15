@@ -94,7 +94,7 @@ extents = Vector2( 12, 11.5 )
 
 [node name="Spotlight" type="AnimatedSprite" groups=["grid_object", "spotlight"]]
 frames = SubResource( 1 )
-animation = "up"
+animation = "down"
 offset = Vector2( 1, -6 )
 script = ExtResource( 4 )
 

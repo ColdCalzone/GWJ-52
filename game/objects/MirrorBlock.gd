@@ -36,7 +36,7 @@ func _process(delta : float):
 		#reflect_light(light_state)
 	else:
 		if being_dragged: 
-			position = get_global_mouse_position() / grid.scale
+			position = (get_global_mouse_position() - grid.position) / grid.scale
 		if rotation_offset != 0:
 			time_elapsed += delta
 		if time_elapsed >= delay:
@@ -46,7 +46,7 @@ func _process(delta : float):
 				region_rect.position.x = 96
 			rotation_offset -= clamp(rotation_offset, -1, 1)
 
-func _on_ClickArea_input_event(viewport, event : InputEvent, shape_idx):
+func _on_Click_input_event(viewport, event : InputEvent, shape_idx):
 	if event is InputEventMouseButton and not ungrabbable:
 		being_dragged = event.pressed
 		if !being_dragged:

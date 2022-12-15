@@ -47,8 +47,11 @@ func _process(delta):
 
 func snap_block_to_position(block : Node2D):
 	if block is MirrorBlock:
-		if Vector2.ZERO < block.position and block.position < rect_scale * size:
+		if (block.position.x > 0 and block.position.y > 0) and (
+			block.position.x < rect_scale.x * size.x and block.position.y < rect_scale.y * size.y):
 			snap_to_position(block)
+		else:
+			block.queue_free()
 	if block is Spotlight:
 		if (block.position.x > 0 and block.position.x < size.x * rect_scale.x) and (
 			(block.position.y > size.y * rect_scale.y and block.position.y < (size.y + 1) * rect_scale.y) or
@@ -60,11 +63,21 @@ func snap_block_to_position(block : Node2D):
 			(block.position.x > size.x * rect_scale.x and block.position.x < (size.x + 1) * rect_scale.x)):
 				block.change_direction(3 if block.position.x > 0 else 1)
 				snap_to_position(block)
+		else:
+			block.queue_free()
 
 func snap_to_position(entity : Node2D):
 	var pos = entity.position + rect_scale/2
-	entity.position = Vector2 (
+	var new_pos = Vector2 (
 			stepify(pos.x, rect_scale.x),
 			stepify(pos.y, rect_scale.y)
 		) - rect_scale/2
-	entity.grid_position = (entity.position - rect_scale/2) / rect_scale
+	var new_grid_pos = (new_pos - rect_scale/2) / rect_scale
+	if grid.has(new_grid_pos):
+		entity.position = entity.grid_position * rect_scale + rect_scale/2
+	else:
+		grid.erase(entity.grid_position)
+		grid[new_grid_pos] = entity
+		entity.position = new_pos
+		entity.grid_position = new_grid_pos
+		

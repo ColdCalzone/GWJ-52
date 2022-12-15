@@ -1,56 +1,59 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/Grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/MirrorBlock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=3]
+[ext_resource path="res://objects/menu/PartPicker.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/Ghost.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/Spotlight.tscn" type="PackedScene" id=6]
 
-[node name="Game" type="Node2D" groups=["Game"]]
+[node name="Game" type="Control" groups=["Game"]]
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 2
 script = ExtResource( 3 )
 
+[node name="PartPicker" parent="." instance=ExtResource( 4 )]
+margin_left = 540.0
+margin_right = 540.24
+
 [node name="Grid" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 112 )
 scale = Vector2( 2, 2 )
-size = Vector2( 6, 5 )
 
 [node name="MirrorBlock" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 90, 63 )
+position = Vector2( 70, 63 )
 
 [node name="MirrorBlock2" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 110, 63 )
+position = Vector2( 90, 63 )
 
 [node name="MirrorBlock3" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 110, 21 )
+position = Vector2( 90, 21 )
 region_rect = Rect2( 64, 0, 32, 32 )
 state = 1
 
 [node name="MirrorBlock4" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 110, 7 )
+position = Vector2( 90, 7 )
 
 [node name="MirrorBlock6" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 30, 7 )
+position = Vector2( 10, 7 )
 region_rect = Rect2( 64, 0, 32, 32 )
 state = 1
 
 [node name="MirrorBlock7" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 30, 63 )
+position = Vector2( 10, 63 )
 
 [node name="MirrorBlock5" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 110, 35 )
+position = Vector2( 90, 35 )
 
 [node name="Ghost" parent="Grid" instance=ExtResource( 5 )]
-position = Vector2( 50, 63 )
-frame = 0
+position = Vector2( 30, 63 )
+frame = 1
 
 [node name="Spotlight" parent="Grid" instance=ExtResource( 6 )]
-position = Vector2( -10, 7 )
+position = Vector2( -18, 7 )
+animation = "right"
 direction = 1
 
 [node name="Spotlight2" parent="Grid" instance=ExtResource( 6 )]
-position = Vector2( 90, -7 )
-animation = "down"
-direction = 2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 121, 72 )
-current = true
+position = Vector2( 70, -7 )
