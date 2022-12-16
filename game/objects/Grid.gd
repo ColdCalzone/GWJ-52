@@ -11,6 +11,8 @@ var time = 0
 
 var grid : Dictionary = {}
 
+signal deleted
+
 func _ready():
 	for block in get_tree().get_nodes_in_group("mirror_blocks"):
 		block.connect("placed", self, "snap_block_to_position")
@@ -51,7 +53,11 @@ func snap_block_to_position(block : Node2D):
 			block.position.x < rect_scale.x * size.x and block.position.y < rect_scale.y * size.y):
 			snap_to_position(block)
 		else:
+			if grid.has(block.grid_position):
+				grid.erase(block.grid_position)
 			block.queue_free()
+			yield(block, "tree_exited")
+			emit_signal("deleted")
 	if block is Spotlight:
 		if (block.position.x > 0 and block.position.x < size.x * rect_scale.x) and (
 			(block.position.y > size.y * rect_scale.y and block.position.y < (size.y + 1) * rect_scale.y) or
@@ -64,7 +70,11 @@ func snap_block_to_position(block : Node2D):
 				block.change_direction(3 if block.position.x > 0 else 1)
 				snap_to_position(block)
 		else:
+			if grid.has(block.grid_position):
+				grid.erase(block.grid_position)
 			block.queue_free()
+			yield(block, "tree_exited")
+			emit_signal("deleted")
 
 func snap_to_position(entity : Node2D):
 	var pos = entity.position + rect_scale/2
@@ -74,8 +84,14 @@ func snap_to_position(entity : Node2D):
 		) - rect_scale/2
 	var new_grid_pos = (new_pos - rect_scale/2) / rect_scale
 	if grid.has(new_grid_pos):
-		entity.position = entity.grid_position * rect_scale + rect_scale/2
+		if grid.has(entity.grid_position):
+			entity.position = entity.grid_position * rect_scale + rect_scale/2
+		else:
+			entity.queue_free()
+			yield(entity, "tree_exited")
+			emit_signal("deleted")
 	else:
+		print(new_grid_pos)
 		grid.erase(entity.grid_position)
 		grid[new_grid_pos] = entity
 		entity.position = new_pos

@@ -21,34 +21,9 @@ margin_right = 540.24
 position = Vector2( 96, 112 )
 scale = Vector2( 2, 2 )
 
-[node name="MirrorBlock" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 70, 63 )
-
-[node name="MirrorBlock2" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 90, 63 )
-
-[node name="MirrorBlock3" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 90, 21 )
-region_rect = Rect2( 64, 0, 32, 32 )
-state = 1
-
-[node name="MirrorBlock4" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 90, 7 )
-
-[node name="MirrorBlock6" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 10, 7 )
-region_rect = Rect2( 64, 0, 32, 32 )
-state = 1
-
-[node name="MirrorBlock7" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 10, 63 )
-
-[node name="MirrorBlock5" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 90, 35 )
-
 [node name="Ghost" parent="Grid" instance=ExtResource( 5 )]
 position = Vector2( 30, 63 )
-frame = 1
+frame = 0
 
 [node name="Spotlight" parent="Grid" instance=ExtResource( 6 )]
 position = Vector2( -18, 7 )
@@ -57,3 +32,6 @@ direction = 1
 
 [node name="Spotlight2" parent="Grid" instance=ExtResource( 6 )]
 position = Vector2( 70, -7 )
+
+[node name="MirrorBlock" parent="Grid" instance=ExtResource( 2 )]
+position = Vector2( 10, 6.5 )

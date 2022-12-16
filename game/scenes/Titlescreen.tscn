@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/CC_bg.png" type="Texture" id=2]
+[ext_resource path="res://sprites/menu_nine_patch.png" type="Texture" id=3]
+[ext_resource path="res://src/Theme.tres" type="Theme" id=4]
+[ext_resource path="res://scenes/Titlescreen.gd" type="Script" id=5]
+
+[node name="Titlescreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+position = Vector2( -76, -29 )
+rotation = -0.182499
+scale = Vector2( 1.5, 1.5 )
+size = Vector2( 11, 10 )
+distance_factor = Vector2( 1.5, 1.5 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 167.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_left = 170.0
+margin_top = 8.0
+margin_right = 470.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 300, 150 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+margin_top = 167.0
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer2"]
+margin_left = 220.0
+margin_top = 21.0
+margin_right = 420.0
+margin_bottom = 171.0
+rect_min_size = Vector2( 200, 150 )
+texture = ExtResource( 3 )
+patch_margin_left = 9
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2"]
+margin_left = 232.0
+margin_top = 43.0
+margin_right = 407.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 175, 0 )
+theme = ExtResource( 4 )
+custom_constants/separation = 16
+alignment = 1
+
+[node name="Play" type="Button" parent="CenterContainer2/VBoxContainer"]
+margin_right = 175.0
+margin_bottom = 25.0
+text = "Play"
+
+[node name="Options" type="Button" parent="CenterContainer2/VBoxContainer"]
+margin_top = 41.0
+margin_right = 175.0
+margin_bottom = 66.0
+text = "Options"
+
+[node name="Quit" type="Button" parent="CenterContainer2/VBoxContainer"]
+margin_top = 82.0
+margin_right = 175.0
+margin_bottom = 107.0
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer2/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="CenterContainer2/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="CenterContainer2/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

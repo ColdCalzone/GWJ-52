@@ -57,14 +57,12 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource( 1 )
-margin_right = 640.0
+margin_left = -1.0
+margin_right = 639.0
 margin_bottom = 360.0
 rect_min_size = Vector2( 640, 360 )
 texture = ExtResource( 1 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

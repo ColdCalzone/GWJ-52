@@ -15,4 +15,5 @@ void fragment() {
 	if(UV.x + UV.y < 1.0 + (cos(time + delay) * speed)) {
 		COLOR.a = -(cos(time + delay) * speed) + (UV.x + UV.y) + base_alpha;
 	}
+	COLOR.a = clamp(COLOR.a, 0.0, 1.0);
 }

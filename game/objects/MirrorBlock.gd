@@ -20,7 +20,7 @@ export var ungrabbable = false
 
 onready var grid = get_tree().get_nodes_in_group("Grid")[0]
 
-var grid_position : Vector2 = Vector2.ZERO
+var grid_position : Vector2 = -Vector2.ONE
 
 signal placed(block)
 
