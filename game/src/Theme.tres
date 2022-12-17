@@ -1,7 +1,59 @@
-[gd_resource type="Theme" load_steps=2 format=2]
+[gd_resource type="Theme" load_steps=14 format=2]
 
 [ext_resource path="res://src/Eminent Hearers.tres" type="DynamicFont" id=1]
+[ext_resource path="res://sprites/check_button.png" type="Texture" id=2]
+[ext_resource path="res://sprites/slider.png" type="Texture" id=3]
+[ext_resource path="res://sprites/grabber.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 4.0
+margin_right = 4.0
+margin_top = 3.0
+margin_bottom = 3.0
 
 [resource]
 default_font = ExtResource( 1 )
+CheckButton/icons/off = SubResource( 1 )
+CheckButton/icons/off_disabled = SubResource( 2 )
+CheckButton/icons/on = SubResource( 3 )
+CheckButton/icons/on_disabled = SubResource( 4 )
+GridContainer/constants/hseparation = 12
+GridContainer/constants/vseparation = 12
+HSlider/icons/grabber = SubResource( 5 )
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = SubResource( 6 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 7 )
+HSlider/styles/grabber_area_highlight = SubResource( 8 )
+HSlider/styles/slider = SubResource( 9 )
 LineEdit/constants/minimum_spaces = 5

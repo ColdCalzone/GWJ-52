@@ -19,5 +19,5 @@ func _process(delta):
 func _draw():
 	for y in range(size.y):
 		for x in range(0, size.x, 2):
-			draw_texture(LIGHT, Vector2(x * 27 * distance_factor.x, (y * 27 * distance_factor.y - time * speed)))
-			draw_texture(DARK, Vector2((x + 1) * 27 * distance_factor.x, (y * 27 * distance_factor.y + time * speed)))
+			draw_texture_rect(LIGHT, Rect2(x * 27 * distance_factor.x, (y * 27 * distance_factor.y - time * speed), 16, 16), false)
+			draw_texture_rect(DARK, Rect2((x + 1) * 27 * distance_factor.x, (y * 27 * distance_factor.y + time * speed), 16, 16), false)

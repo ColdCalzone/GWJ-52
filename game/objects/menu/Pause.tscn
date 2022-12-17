@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Theme.tres" type="Theme" id=1]
-[ext_resource path="res://sprites/CC_bg.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Logo.png" type="Texture" id=2]
 [ext_resource path="res://objects/menu/Pause.gd" type="Script" id=3]
 
 [sub_resource type="Shader" id=1]
@@ -82,13 +82,16 @@ margin_bottom = 157.0
 rect_min_size = Vector2( 235, 157 )
 texture = ExtResource( 2 )
 expand = true
+stretch_mode = 6
 
 [node name="Tween" type="Tween" parent="."]
 
 [connection signal="gui_input" from="ColorRect/CenterContainer/VBoxContainer/Resume" to="." method="_on_Resume_gui_input"]
 [connection signal="mouse_entered" from="ColorRect/CenterContainer/VBoxContainer/Resume" to="." method="_on_Resume_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect/CenterContainer/VBoxContainer/Resume" to="." method="_on_Resume_mouse_exited"]
+[connection signal="gui_input" from="ColorRect/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_gui_input"]
 [connection signal="mouse_entered" from="ColorRect/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_mouse_exited"]
+[connection signal="gui_input" from="ColorRect/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_gui_input"]
 [connection signal="mouse_entered" from="ColorRect/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_mouse_exited"]

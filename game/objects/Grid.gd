@@ -85,7 +85,6 @@ func calculate_grid_position(pos : Vector2):
 	return [new_pos, (new_pos - rect_scale/2) / rect_scale]
 
 func snap_to_position(entity : Node2D):
-	print(entity)
 	var calculated = calculate_grid_position(entity.position)
 	var new_pos = calculated[0]
 	var new_grid_pos = calculated[1]
@@ -97,7 +96,6 @@ func snap_to_position(entity : Node2D):
 			yield(entity, "tree_exited")
 			emit_signal("deleted")
 	else:
-		print(new_grid_pos)
 		grid.erase(entity.grid_position)
 		grid[new_grid_pos] = entity
 		entity.position = new_pos

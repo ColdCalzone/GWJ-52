@@ -1,5 +1,40 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://objects/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/LevelSelect.gd" type="Script" id=2]
+[ext_resource path="res://src/Theme.tres" type="Theme" id=3]
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+position = Vector2( 78, -158 )
+rotation = 0.261799
+scale = Vector2( 1.5, 1.5 )
+size = Vector2( 12, 12 )
+distance_factor = Vector2( 1.5, 1.5 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 17.0
+margin_top = 14.0
+margin_right = 430.0
+margin_bottom = 340.0
+theme = ExtResource( 3 )
+follow_focus = true
+scroll_horizontal_enabled = false
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+theme = ExtResource( 3 )
+columns = 10
+
+[node name="Back" type="Button" parent="."]
+margin_left = 8.0
+margin_top = 328.0
+margin_right = 60.0
+margin_bottom = 353.0
+theme = ExtResource( 3 )
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

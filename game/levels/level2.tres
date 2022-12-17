@@ -1,0 +1,1 @@
+{"grid_objects":{"(3, 1)":"block","(3, 3)":"block","(5, 1)":"block","(1, 1)":"ghost","(1, 0)":"block","(1, 2)":"block","(5, 2)":"ghost","(5, 0)":"ghost","(3, 0)":"halfblock","(3, 2)":"halfblock","(5, 3)":"block","(3, 4)":"halfblock","(1, 3)":"ghost","(1, 4)":"block","(5, 4)":"ghost"},"size":"(7, 5)","allowed":{"mirror":10,"spotlight":3}}

@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+const OPTIONS = preload("res://objects/menu/Options.tscn")
+var option = null
+
 onready var tween = $Tween
 onready var bg = $ColorRect2
 onready var menu = $ColorRect
@@ -38,6 +41,9 @@ func _on_Quit_mouse_exited():
 
 func unpause():
 	if tween.is_active(): return
+	if option != null:
+		option.queue_free()
+		option = null
 	tween.interpolate_property(bg, "color:a", 0.5, 0, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.interpolate_property(bg, "rect_position:x", 235, 0, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.interpolate_property(bg, "rect_size:x", 405, 640, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
@@ -54,3 +60,21 @@ func _on_Resume_gui_input(event):
 
 func _input(event):
 	if event.is_action_pressed("pause"): unpause()
+
+func _on_Options_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed: return
+		if option == null:
+			option = OPTIONS.instance()
+			option.rect_position.x = 235
+			add_child(option)
+		else:
+			option.queue_free()
+			option = null
+
+func _on_Quit_gui_input(event):
+	if event is InputEventMouseButton:
+		if tween.is_active(): return
+		TransitionManager.transition_to("res://scenes/LevelSelect.tscn")
+		get_tree().paused = false
+		queue_free()

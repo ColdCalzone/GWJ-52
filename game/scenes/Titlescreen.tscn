@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/Background.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sprites/CC_bg.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Logo.png" type="Texture" id=2]
 [ext_resource path="res://sprites/menu_nine_patch.png" type="Texture" id=3]
 [ext_resource path="res://src/Theme.tres" type="Theme" id=4]
 [ext_resource path="res://scenes/Titlescreen.gd" type="Script" id=5]
@@ -23,11 +23,11 @@ margin_right = 640.0
 margin_bottom = 167.0
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer"]
-margin_left = 170.0
+margin_left = 86.0
 margin_top = 8.0
-margin_right = 470.0
+margin_right = 552.667
 margin_bottom = 158.0
-rect_min_size = Vector2( 300, 150 )
+rect_min_size = Vector2( 466.667, 150 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 1
