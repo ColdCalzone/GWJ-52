@@ -2,7 +2,7 @@ tool
 extends AnimatedSprite
 class_name Ghost
 
-var grid_position : Vector2 = Vector2.ZERO
+var grid_position : Vector2 = -Vector2.ONE
 
 export var hit_by_beam : bool = false setget set_hit_by_beam
 

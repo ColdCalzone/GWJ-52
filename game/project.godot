@@ -9,15 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Sprite",
+"class": "Block",
+"language": "GDScript",
+"path": "res://objects/Block.gd"
+}, {
 "base": "AnimatedSprite",
 "class": "Ghost",
 "language": "GDScript",
 "path": "res://objects/Ghost.gd"
 }, {
-"base": "AnimatedSprite",
-"class": "GridObject",
+"base": "Sprite",
+"class": "HalfBlock",
 "language": "GDScript",
-"path": "res://objects/GridObject.gd"
+"path": "res://objects/HalfBlock.gd"
 }, {
 "base": "Sprite",
 "class": "MirrorBlock",
@@ -30,8 +35,9 @@ _global_script_classes=[ {
 "path": "res://objects/Spotlight.gd"
 } ]
 _global_script_class_icons={
+"Block": "",
 "Ghost": "",
-"GridObject": "",
+"HalfBlock": "",
 "MirrorBlock": "",
 "Spotlight": ""
 }

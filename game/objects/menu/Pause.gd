@@ -37,6 +37,7 @@ func _on_Quit_mouse_exited():
 	quit.text = "Quit"
 
 func unpause():
+	if tween.is_active(): return
 	tween.interpolate_property(bg, "color:a", 0.5, 0, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.interpolate_property(bg, "rect_position:x", 235, 0, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.interpolate_property(bg, "rect_size:x", 405, 640, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)

@@ -87,12 +87,14 @@ animations = [ {
 extents = Vector2( 12, 7 )
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 9, 11 )
+extents = Vector2( 9, 7 )
 
 [sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 12, 11.5 )
 
 [node name="Spotlight" type="AnimatedSprite" groups=["grid_object", "spotlight"]]
+z_index = 1
+z_as_relative = false
 frames = SubResource( 1 )
 animation = "down"
 offset = Vector2( 1, -6 )
@@ -109,7 +111,7 @@ shape = SubResource( 17 )
 position = Vector2( 1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightClick"]
-position = Vector2( -7, -6 )
+position = Vector2( -7, -2 )
 shape = SubResource( 18 )
 
 [node name="DownClick" type="Area2D" parent="."]

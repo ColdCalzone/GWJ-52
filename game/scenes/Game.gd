@@ -33,6 +33,8 @@ func _input(event):
 				mirror.reflect_light(-99)
 			for ghost in get_tree().get_nodes_in_group("ghost"):
 				ghost.set_hit_by_beam(false)
+			for block in get_tree().get_nodes_in_group("half_block"):
+				block.set_light(-99)
 		state = !state
 	if event is InputEventMouseButton:
 		if event.pressed or dragged_parts.empty(): return

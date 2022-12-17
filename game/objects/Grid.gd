@@ -48,7 +48,7 @@ func _process(delta):
 			time = 0
 
 func snap_block_to_position(block : Node2D):
-	if block is MirrorBlock:
+	if block is MirrorBlock or block is Ghost or block is Block or block is HalfBlock:
 		if (block.position.x > 0 and block.position.y > 0) and (
 			block.position.x < rect_scale.x * size.x and block.position.y < rect_scale.y * size.y):
 			snap_to_position(block)
@@ -76,13 +76,19 @@ func snap_block_to_position(block : Node2D):
 			yield(block, "tree_exited")
 			emit_signal("deleted")
 
-func snap_to_position(entity : Node2D):
-	var pos = entity.position + rect_scale/2
+func calculate_grid_position(pos : Vector2):
+	pos = pos + rect_scale/2
 	var new_pos = Vector2 (
 			stepify(pos.x, rect_scale.x),
 			stepify(pos.y, rect_scale.y)
 		) - rect_scale/2
-	var new_grid_pos = (new_pos - rect_scale/2) / rect_scale
+	return [new_pos, (new_pos - rect_scale/2) / rect_scale]
+
+func snap_to_position(entity : Node2D):
+	print(entity)
+	var calculated = calculate_grid_position(entity.position)
+	var new_pos = calculated[0]
+	var new_grid_pos = calculated[1]
 	if grid.has(new_grid_pos):
 		if grid.has(entity.grid_position):
 			entity.position = entity.grid_position * rect_scale + rect_scale/2
