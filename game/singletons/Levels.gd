@@ -17,6 +17,7 @@ func _ready():
 					if index >= levels.size():
 						levels.resize(index + 1)
 					levels[int(file_name.split("level")[1])] = JSON.parse(file.get_as_text()).result
+					file.close()
 			file_name = dir.get_next()
 		dir.list_dir_end()
 

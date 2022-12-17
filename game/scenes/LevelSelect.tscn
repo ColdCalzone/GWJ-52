@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/LevelSelect.gd" type="Script" id=2]
 [ext_resource path="res://src/Theme.tres" type="Theme" id=3]
+[ext_resource path="res://sprites/line.png" type="Texture" id=4]
+[ext_resource path="res://sprites/parts/mirror_part.tres" type="Texture" id=5]
+[ext_resource path="res://sprites/parts/spotlight_part.tres" type="Texture" id=6]
+[ext_resource path="res://src/Eminent_Hearers.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 4
+outline_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
+font_data = ExtResource( 7 )
 
 [node name="LevelSelect" type="Control"]
 anchor_right = 1.0
@@ -36,5 +45,72 @@ margin_right = 60.0
 margin_bottom = 353.0
 theme = ExtResource( 3 )
 text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 452.0
+margin_top = 14.0
+margin_right = 625.0
+margin_bottom = 340.0
+custom_constants/separation = 12
+
+[node name="LevelName" type="Label" parent="VBoxContainer"]
+margin_right = 173.0
+margin_bottom = 19.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "#) LEVEL NAME"
+
+[node name="TextureRect" type="NinePatchRect" parent="VBoxContainer"]
+margin_top = 31.0
+margin_right = 173.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 3 )
+texture = ExtResource( 4 )
+patch_margin_left = 2
+patch_margin_right = 2
+
+[node name="Mirrors" type="HBoxContainer" parent="VBoxContainer"]
+modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
+margin_top = 46.0
+margin_right = 173.0
+margin_bottom = 110.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Mirrors"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/Mirrors"]
+margin_left = 68.0
+margin_top = 22.0
+margin_right = 118.0
+margin_bottom = 41.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "--/--"
+
+[node name="Spotlights" type="HBoxContainer" parent="VBoxContainer"]
+modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
+margin_top = 122.0
+margin_right = 173.0
+margin_bottom = 186.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Spotlights"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="Label" type="Label" parent="VBoxContainer/Spotlights"]
+margin_left = 68.0
+margin_top = 22.0
+margin_right = 118.0
+margin_bottom = 41.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 1 )
+text = "--/--"
 
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

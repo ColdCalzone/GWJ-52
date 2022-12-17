@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sprites/rail.png" type="Texture" id=1]
+
+[node name="Rail" type="NinePatchRect"]
+margin_right = 8.0
+margin_bottom = 10.0
+grow_vertical = 2
+texture = ExtResource( 1 )
+patch_margin_top = 4
+patch_margin_bottom = 4

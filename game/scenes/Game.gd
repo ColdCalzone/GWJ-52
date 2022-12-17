@@ -82,6 +82,10 @@ func _ready():
 	grid.connect("deleted", self, "update_totals")
 	part_pick.create_previews(part_types)
 	update_totals()
+	
+	if Levels.current_level == 0 and !Save.data["viewed_tutorial"]:
+		add_child(load("res://objects/menu/Tutorial.tscn").instance())
+		
 
 func _input(event):
 	if event.is_action_pressed("fire_beams"):
@@ -134,7 +138,9 @@ func update_totals():
 
 func win():
 	var win = WIN.instance()
-	win.amounts = part_pick.get_amounts()
+	var amounts = part_pick.get_amounts()
+	win.amounts = amounts
+	Save.set_score(Levels.current_level, amounts)
 	add_child(win)
 
 func _on_VictoryTimer_timeout():

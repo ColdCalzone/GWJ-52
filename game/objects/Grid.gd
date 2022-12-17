@@ -6,6 +6,12 @@ var rect_scale = Vector2(20, 14)
 
 const BACK_COLOR : Color = Color("141013")
 const GRID_COLOR : Color = Color("221c1a")
+const RAIL : PackedScene = preload("res://objects/Rail.tscn")
+
+var top_rail
+var left_rail
+var bottom_rail
+var right_rail
 
 var time = 0
 
@@ -35,10 +41,36 @@ func _draw():
 	for y in range(0, area.size.y, rect_scale.y):
 		draw_line(Vector2(0, y + 0.5), Vector2(area.size.x, y + 0.5), GRID_COLOR, 1.05)
 	# Drawing rails
-	draw_line(Vector2(0, -rect_scale.y), Vector2(rect_scale.x * size.x, -rect_scale.y), GRID_COLOR, 1.1)
-	draw_line(Vector2(0, (size.y + 1) * rect_scale.y), Vector2(rect_scale.x * size.x, (size.y + 1) * rect_scale.y), GRID_COLOR, 1.1)
-	draw_line(Vector2(-rect_scale.x, 0), Vector2(-rect_scale.x, rect_scale.y * size.y), GRID_COLOR, 1.1)
-	draw_line(Vector2((size.x + 1) * rect_scale.x, 0), Vector2((size.x + 1) * rect_scale.x, rect_scale.y * size.y), GRID_COLOR, 1.1)
+	if top_rail != null:
+		top_rail.queue_free()
+		top_rail = null
+	top_rail = RAIL.instance()
+	top_rail.rect_rotation = -90
+	top_rail.rect_position = Vector2(0, -rect_scale.y/2 + 1)
+	top_rail.rect_size.y = rect_scale.x * size.x
+	add_child(top_rail)
+	if left_rail != null:
+		left_rail.queue_free()
+		left_rail = null
+	left_rail = RAIL.instance()
+	left_rail.rect_position = Vector2(-rect_scale.x - 5, 0)
+	left_rail.rect_size.y = rect_scale.y * size.y
+	add_child(left_rail)
+	if right_rail != null:
+		right_rail.queue_free()
+		right_rail = null
+	right_rail = RAIL.instance()
+	right_rail.rect_position = Vector2((size.x + 1) * rect_scale.x - 1, 0)
+	right_rail.rect_size.y = rect_scale.y * size.y
+	add_child(right_rail)
+	if bottom_rail != null:
+		bottom_rail.queue_free()
+		bottom_rail = null
+	bottom_rail = RAIL.instance()
+	bottom_rail.rect_rotation = -90
+	bottom_rail.rect_position = Vector2(0, rect_scale.y * (size.y + 1.4))
+	bottom_rail.rect_size.y= rect_scale.x * size.x
+	add_child(bottom_rail)
 
 func _process(delta):
 	if Engine.editor_hint:

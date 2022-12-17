@@ -1,0 +1,28 @@
+extends Node
+
+var data = {
+	"viewed_tutorial" : false,
+	"scores": [
+	]
+}
+
+func set_score(level : int, score : Dictionary):
+	if data["scores"].size() <= level:
+		data["scores"].resize(level + 1)
+	data["scores"][level] = score
+	save_game()
+
+func set_viewed_tutorial(value = true):
+	data["viewed_tutorial"] = value
+	save_game()
+
+func load_game():
+	var file = File.new()
+	if file.open("user://save.json", File.READ) == OK:
+		data = JSON.parse(file.get_as_text()).result
+
+func save_game():
+	var file = File.new()
+	if file.open("user://save.json", File.WRITE) == OK:
+		file.store_string(JSON.print(data))
+		file.close()

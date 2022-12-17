@@ -33,6 +33,7 @@ func _ready():
 	yield(tween, "tween_all_completed")
 	# if Settings.show_fps:
 	#	FPS.show_fps()
+	Save.load_game()
 	get_tree().change_scene("res://scenes/Titlescreen.tscn")
 
 var time = 0.0
@@ -40,8 +41,7 @@ var time = 0.0
 func _input(event):
 	if event is InputEventKey:
 		tween.stop_all()
-		#if Settings.show_fps:
-		#	FPS.show_fps()
+		Save.load_game()
 		get_tree().change_scene("res://scenes/Titlescreen.tscn")
 
 func _process(delta):
