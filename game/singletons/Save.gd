@@ -2,6 +2,7 @@ extends Node
 
 var data = {
 	"viewed_tutorial" : false,
+	"viewed_thanks" : false,
 	"scores": [
 	]
 }
@@ -20,6 +21,10 @@ func set_score(level : int, score : Dictionary):
 
 func set_viewed_tutorial(value = true):
 	data["viewed_tutorial"] = value
+	save_game()
+
+func set_viewed_thanks(value = true):
+	data["viewed_thanks"] = value
 	save_game()
 
 func load_game():

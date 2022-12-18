@@ -71,3 +71,26 @@ func _on_Click_input_event(viewport, event : InputEvent, shape_idx):
 		being_dragged = event.pressed
 		if !being_dragged:
 			emit_signal("placed", self)
+
+func enable():
+	match direction:
+		Direction.UP:
+			up_area.input_pickable = true
+			animation = "up"
+		Direction.DOWN:
+			down_area.input_pickable = true
+			animation = "down"
+		Direction.RIGHT:
+			right_area.input_pickable = true
+			right_area.scale.x = 1
+			animation = "right"
+		Direction.LEFT:
+			right_area.input_pickable = true
+			right_area.scale.x = -1
+			flip_h = true
+			animation = "right"
+
+func disable():
+	for area in get_children():
+		area.input_pickable = false
+	

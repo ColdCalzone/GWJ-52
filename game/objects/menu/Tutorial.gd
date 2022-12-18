@@ -34,7 +34,7 @@ func _input(event):
 			tween.start()
 			yield(tween, "tween_all_completed")
 			Save.set_viewed_tutorial()
-			queue_free()
+			get_parent().queue_free()
 
 func add_text():
 	text.visible_characters += 1

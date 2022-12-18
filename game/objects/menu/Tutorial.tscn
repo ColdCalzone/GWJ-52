@@ -6,19 +6,21 @@
 [ext_resource path="res://sprites/tutorial.png" type="Texture" id=4]
 [ext_resource path="res://sprites/tutorial2.png" type="Texture" id=5]
 
-[node name="Tutorial" type="CenterContainer"]
+[node name="Tutorial" type="CanvasLayer"]
+
+[node name="Tutorial" type="CenterContainer" parent="."]
 pause_mode = 2
 margin_right = 640.0
 margin_bottom = 360.0
 script = ExtResource( 3 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Tutorial"]
 margin_right = 640.0
 margin_bottom = 360.0
 rect_min_size = Vector2( 640, 360 )
 color = Color( 0, 0, 0, 0.690196 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="Tutorial"]
 margin_left = 95.0
 margin_top = 55.0
 margin_right = 545.0
@@ -32,7 +34,7 @@ patch_margin_bottom = 9
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+[node name="TextureRect" type="TextureRect" parent="Tutorial/NinePatchRect"]
 margin_left = 444.0
 margin_top = 80.0
 margin_right = 534.0
@@ -41,7 +43,7 @@ rect_min_size = Vector2( 90, 90 )
 texture = ExtResource( 4 )
 expand = true
 
-[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
+[node name="TextureRect2" type="TextureRect" parent="Tutorial/NinePatchRect"]
 margin_left = -82.0
 margin_top = 152.0
 margin_right = 8.0
@@ -50,7 +52,7 @@ rect_min_size = Vector2( 90, 90 )
 texture = ExtResource( 5 )
 expand = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial"]
 margin_left = 104.0
 margin_top = 64.0
 margin_right = 536.0
@@ -69,13 +71,13 @@ text = "Welcome to REFLECTOPLASM
 The goal is simple: get rid of all those... definitely evil, definitely not just vibing ghosts whom just had their home invaded.
 You accomplish this absolutely noble goal with a few simple tools: your Spotlights and your Mirrors. We've sadly provided only a limited amount in each level; budget cuts, y'know? Good luck!"
 
-[node name="CenterContainer" type="CenterContainer" parent="RichTextLabel"]
+[node name="CenterContainer" type="CenterContainer" parent="Tutorial/RichTextLabel"]
 margin_top = 217.0
 margin_right = 540.0
 margin_bottom = 236.0
 rect_scale = Vector2( 0.8, 0.8 )
 
-[node name="Label" type="Label" parent="RichTextLabel/CenterContainer"]
+[node name="Label" type="Label" parent="Tutorial/RichTextLabel/CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 105.0
 margin_right = 435.0
@@ -84,7 +86,7 @@ theme = ExtResource( 2 )
 custom_colors/font_color = Color( 0.737255, 0.737255, 0.737255, 1 )
 text = "- Press any button to continue - "
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Tween" type="Tween" parent="Tutorial"]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="Tutorial"]
 wait_time = 0.05

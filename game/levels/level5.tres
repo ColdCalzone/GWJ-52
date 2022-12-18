@@ -1,0 +1,1 @@
+{"grid_objects":{"(4, 4)":"rightmirror","(3, 4)":"leftmirror","(3, 3)":"rightmirror","(4, 3)":"leftmirror","(6, 0)":"ghost","(7, 3)":"ghost","(3, 1)":"ghost","(1, 0)":"ghost","(0, 1)":"ghost","(4, 5)":"ghost","(3, 5)":"ghost"},"size":"(8, 8)","allowed":{"mirror":6,"spotlight":2},"name":"Parcheesi"}

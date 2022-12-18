@@ -12,7 +12,7 @@ onready var spotlight_count = $VBoxContainer/Spotlights/Label
 onready var spotlights = $VBoxContainer/Spotlights
 
 func _ready():
-	for i in range(Levels.levels.size() if Save.data["viewed_tutorial"] else 1):
+	for i in range(1 if Save.data["viewed_tutorial"] else 0, Levels.levels.size() if Save.data["viewed_tutorial"] else 1):
 		var button = LEVEL_BUTTON.instance()
 		grid.add_child(button)
 		if i == 0: button.set_tutorial()

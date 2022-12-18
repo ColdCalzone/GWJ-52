@@ -36,7 +36,9 @@ scroll_horizontal_enabled = false
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 theme = ExtResource( 3 )
-columns = 10
+custom_constants/vseparation = 80
+custom_constants/hseparation = 43
+columns = 5
 
 [node name="Back" type="Button" parent="."]
 margin_left = 8.0

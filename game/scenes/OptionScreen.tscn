@@ -1,15 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/menu/Options.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Theme.tres" type="Theme" id=2]
 [ext_resource path="res://objects/Background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Eminent_Hearers.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/EminentHearers_Outline.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/OptionScreen.gd" type="Script" id=5]
-
-[sub_resource type="DynamicFont" id=1]
-outline_size = 6
-outline_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
-font_data = ExtResource( 4 )
 
 [node name="OptionScreen" type="Control"]
 anchor_right = 1.0
@@ -32,7 +27,7 @@ margin_top = 14.0
 margin_right = 640.0
 margin_bottom = 55.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Programming, Design, Art:
 ColdCalzone"
 
@@ -42,7 +37,7 @@ margin_top = 72.0
 margin_right = 632.0
 margin_bottom = 113.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Eminent Hearers font:
 @uraynuke on Twitter"
 align = 2
@@ -53,7 +48,7 @@ margin_top = 126.0
 margin_right = 640.0
 margin_bottom = 167.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Code licensed under
 GNU GPLv3"
 
@@ -63,7 +58,7 @@ margin_top = 238.0
 margin_right = 640.0
 margin_bottom = 301.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Eminent Hearers font
 under no license
 all rights reserved"
@@ -74,7 +69,7 @@ margin_top = 184.0
 margin_right = 632.0
 margin_bottom = 225.0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Art, Music licensed
 under CC BY 4.0"
 align = 2
@@ -87,4 +82,32 @@ margin_bottom = 352.0
 theme = ExtResource( 2 )
 text = "Back"
 
+[node name="Delete" type="Button" parent="."]
+margin_left = 501.0
+margin_top = 316.0
+margin_right = 633.0
+margin_bottom = 352.0
+theme = ExtResource( 2 )
+text = "Delete Scores"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 2
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="CenterContainer"]
+visible = true
+margin_left = 215.0
+margin_top = 120.0
+margin_right = 425.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 210, 120 )
+rect_pivot_offset = Vector2( 105, 60 )
+theme = ExtResource( 2 )
+window_title = "Are you sure?"
+dialog_text = "This will erase ALL of your scores."
+dialog_autowrap = true
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Delete" to="." method="_on_Delete_pressed"]
+[connection signal="confirmed" from="CenterContainer/ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

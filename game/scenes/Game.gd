@@ -25,6 +25,8 @@ var state : bool = false
 
 var dragged_parts = []
 
+var mouse_pressed
+
 var totals : Dictionary = {}
 
 func _ready():
@@ -88,7 +90,7 @@ func _ready():
 	Music.play_music("solving")
 
 func _input(event):
-	if event.is_action_pressed("fire_beams"):
+	if event.is_action_pressed("fire_beams") and !mouse_pressed:
 		grid_objects.clear()
 		for entity in get_tree().get_nodes_in_group("grid_object"):
 			grid_objects[entity.grid_position] = entity
@@ -96,8 +98,15 @@ func _input(event):
 		for spot in get_tree().get_nodes_in_group("spotlight"):
 			if !state: 
 				spot.turn_on()
+				spot.disable()
+				part_pick.disable()
 			else: 
 				spot.turn_off()
+				spot.enable()
+				part_pick.enable()
+		if !state:
+			for mirror in get_tree().get_nodes_in_group("mirror_blocks"):
+				mirror.disable()
 		if state:
 			timer.stop()
 			click_timer.stop()
@@ -107,11 +116,16 @@ func _input(event):
 				ghost.set_hit_by_beam(false)
 			for block in get_tree().get_nodes_in_group("half_block"):
 				block.set_light(-99)
+			for entity in get_tree().get_nodes_in_group("spotlight"):
+				entity.enable()
+			for entity in get_tree().get_nodes_in_group("mirror_blocks"):
+				entity.enable()
 		elif spotlights.size() > 0:
 			timer.start()
 			click_timer.start()
 		state = !state
 	if event is InputEventMouseButton:
+		mouse_pressed = event.pressed
 		if event.pressed or dragged_parts.empty(): return
 		var part = dragged_parts.pop_front()
 		part._on_Click_input_event(null, event, null)
@@ -132,7 +146,7 @@ func add_part(part):
 	update_totals()
 
 func update_totals():
-	totals["mirror"] = get_tree().get_nodes_in_group("mirror_blocks").size()
+	totals["mirror"] = get_tree().get_nodes_in_group("grabbable_mirror_blocks").size()
 	totals["spotlight"] = get_tree().get_nodes_in_group("spotlight").size()
 	part_pick.update_totals(totals)
 

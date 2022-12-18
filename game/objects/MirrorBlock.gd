@@ -19,6 +19,7 @@ var rotation_offset : int = 0
 export var ungrabbable = false
 
 onready var grid = get_tree().get_nodes_in_group("Grid")[0]
+onready var click_area = $ClickArea
 
 var grid_position : Vector2 = -Vector2.ONE
 
@@ -28,6 +29,8 @@ func _ready():
 	region_rect.position.y = 32 * int(ungrabbable)
 	region_rect.position.x = 64 * int(state)
 	$ClickArea.visible = true
+	if !ungrabbable:
+		add_to_group("grabbable_mirror_blocks")
 
 func _process(delta : float):
 	if Engine.editor_hint:
@@ -98,3 +101,9 @@ func set_light_state(light : int):
 		[LightStates.BOTH, States.LEFT]: 
 			region_rect.position = Vector2(160, height + (32 * int(ungrabbable)))
 		#_:
+
+func enable():
+	click_area.input_pickable = true
+
+func disable():
+	click_area.input_pickable = false

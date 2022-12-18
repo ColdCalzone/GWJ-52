@@ -17,7 +17,10 @@ func _ready():
 
 func _on_Button_pressed():
 	get_tree().paused = false
-	TransitionManager.transition_to("res://scenes/LevelSelect.tscn")
+	if Save.data["scores"].size() == Levels.levels.size() and !Save.data["viewed_thanks"]:
+		TransitionManager.transition_to("res://scenes/Thanks.tscn")
+	else:
+		TransitionManager.transition_to("res://scenes/LevelSelect.tscn")
 
 
 func _on_Button2_pressed():

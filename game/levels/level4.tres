@@ -1,0 +1,1 @@
+{"grid_objects":{"(3, 3)":"ghost","(3, 2)":"halfblock","(2, 3)":"halfblock","(3, 4)":"halfblock","(4, 2)":"block","(2, 4)":"block","(4, 4)":"block","(4, 3)":"halfblock","(2, 2)":"block","(1, 5)":"ghost","(1, 1)":"ghost","(5, 0)":"ghost","(5, 5)":"ghost"},"size":"(7, 7)","allowed":{"mirror":5,"spotlight":2},"name":"Bullseye"}

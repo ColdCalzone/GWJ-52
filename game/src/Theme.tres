@@ -1,18 +1,20 @@
-[gd_resource type="Theme" load_steps=22 format=2]
+[gd_resource type="Theme" load_steps=27 format=2]
 
 [ext_resource path="res://src/Eminent Hearers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://sprites/check_button.png" type="Texture" id=2]
 [ext_resource path="res://sprites/slider.png" type="Texture" id=3]
 [ext_resource path="res://sprites/grabber.png" type="Texture" id=4]
 [ext_resource path="res://sprites/button.png" type="Texture" id=5]
+[ext_resource path="res://sprites/dialog.png" type="Texture" id=6]
+[ext_resource path="res://sprites/close.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 5 )
 region_rect = Rect2( 32, 0, 32, 16 )
-margin_left = 1.0
-margin_right = 1.0
-margin_top = 1.0
-margin_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 2.0
@@ -20,10 +22,10 @@ expand_margin_bottom = 2.0
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 32, 16 )
-margin_left = 1.0
-margin_right = 1.0
-margin_top = 1.0
-margin_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 2.0
@@ -31,10 +33,10 @@ expand_margin_bottom = 2.0
 [sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 5 )
 region_rect = Rect2( 64, 0, 32, 16 )
-margin_left = 1.0
-margin_right = 1.0
-margin_top = 1.0
-margin_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
 expand_margin_left = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 2.0
@@ -83,6 +85,22 @@ margin_right = 4.0
 margin_top = 3.0
 margin_bottom = 3.0
 
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 10, 14 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 7 )
+region = Rect2( 10, 0, 10, 14 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 6 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 20.0
+margin_bottom = 3.0
+expand_margin_top = 19.0
+
 [resource]
 default_font = ExtResource( 1 )
 Button/styles/hover = SubResource( 11 )
@@ -106,3 +124,6 @@ HSlider/styles/grabber_area = SubResource( 7 )
 HSlider/styles/grabber_area_highlight = SubResource( 8 )
 HSlider/styles/slider = SubResource( 9 )
 LineEdit/constants/minimum_spaces = 5
+WindowDialog/icons/close = SubResource( 18 )
+WindowDialog/icons/close_highlight = SubResource( 19 )
+WindowDialog/styles/panel = SubResource( 17 )

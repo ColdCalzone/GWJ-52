@@ -92,6 +92,6 @@ func _on_Button_pressed():
 			"size": grid.size,
 			"allowed": {"mirror": mirrors_allowed.value,
 						"spotlight": spotlights_allowed.value},
-			"name": name_box.value}
+			"name": name_box.text}
 		))
 		file.close()

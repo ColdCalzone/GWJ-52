@@ -1,0 +1,1 @@
+{"grid_objects":{"(3, 2)":"halfblock","(3, 3)":"halfblock","(5, 1)":"ghost","(5, 3)":"ghost","(1, 4)":"ghost","(1, 2)":"ghost","(3, 4)":"block","(3, 1)":"block","(3, 5)":"halfblock","(3, 0)":"halfblock"},"size":"(7, 6)","allowed":{"mirror":4,"spotlight":2},"name":"Crossing Paths"}

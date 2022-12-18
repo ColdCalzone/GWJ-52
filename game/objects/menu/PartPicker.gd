@@ -25,6 +25,15 @@ func update_totals(totals : Dictionary):
 		if parts.has(key):
 			parts[key].set_number(totals[key])
 
+func disable():
+	for part in parts.keys():
+		parts[part].disable()
+
+func enable():
+	for part in parts.keys():
+		if parts[part].current >= parts[part].total_allowed: continue
+		parts[part].enable()
+
 func get_amounts():
 	var out = {}
 	for key in parts.keys():

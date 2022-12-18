@@ -7,9 +7,11 @@ onready var music = {
 
 func play_music(key : String):
 	if !music.has(key): return
+	if stream == music[key]: return
 	stream = music[key]
 	play()
 
 func change_music(key : String):
 	if !music.has(key): return
+	if stream == music[key]: return
 	stream = music[key]
