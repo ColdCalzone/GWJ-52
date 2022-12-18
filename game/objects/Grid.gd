@@ -112,7 +112,7 @@ func calculate_grid_position(pos : Vector2):
 	pos = pos + rect_scale/2
 	var new_pos = Vector2 (
 			stepify(clamp(pos.x, -rect_scale.x, rect_scale.x * (size.x + 1)), rect_scale.x),
-			stepify(clamp(pos.y, -rect_scale.y, rect_scale.y * (size.y + 1)), rect_scale.y)
+			stepify(clamp(pos.y, -rect_scale.y / 2, rect_scale.y * (size.y + 1)), rect_scale.y)
 		) - rect_scale/2
 	return [new_pos, (new_pos - rect_scale/2) / rect_scale]
 
