@@ -1,1 +1,1 @@
-{"grid_objects":{"(2, 2)":"rightmirror","(2, 0)":"block","(4, 1)":"block","(4, 3)":"block","(2, 4)":"block","(0, 1)":"block","(0, 3)":"block","(2, 1)":"ghost","(2, 3)":"ghost"},"size":"(5, 5)","allowed":{"mirror":0,"spotlight":2}}
+{"grid_objects":{"(2, 2)":"rightmirror","(2, 0)":"block","(4, 1)":"block","(4, 3)":"block","(2, 4)":"block","(0, 1)":"block","(0, 3)":"block","(2, 1)":"ghost","(2, 3)":"ghost"},"size":"(5, 5)","allowed":{"mirror":0,"spotlight":2},"name":"Tutorial"}

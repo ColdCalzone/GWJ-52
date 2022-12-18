@@ -1,9 +1,43 @@
-[gd_resource type="Theme" load_steps=14 format=2]
+[gd_resource type="Theme" load_steps=22 format=2]
 
 [ext_resource path="res://src/Eminent Hearers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://sprites/check_button.png" type="Texture" id=2]
 [ext_resource path="res://sprites/slider.png" type="Texture" id=3]
 [ext_resource path="res://sprites/grabber.png" type="Texture" id=4]
+[ext_resource path="res://sprites/button.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 5 )
+region_rect = Rect2( 32, 0, 32, 16 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 5 )
+region_rect = Rect2( 64, 0, 32, 16 )
+margin_left = 1.0
+margin_right = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -20,6 +54,14 @@ region = Rect2( 16, 0, 16, 16 )
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
 region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=16]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 4 )
@@ -43,10 +85,17 @@ margin_bottom = 3.0
 
 [resource]
 default_font = ExtResource( 1 )
+Button/styles/hover = SubResource( 11 )
+Button/styles/normal = SubResource( 10 )
+Button/styles/pressed = SubResource( 12 )
 CheckButton/icons/off = SubResource( 1 )
 CheckButton/icons/off_disabled = SubResource( 2 )
 CheckButton/icons/on = SubResource( 3 )
 CheckButton/icons/on_disabled = SubResource( 4 )
+CheckButton/styles/hover = SubResource( 14 )
+CheckButton/styles/hover_pressed = SubResource( 15 )
+CheckButton/styles/normal = SubResource( 13 )
+CheckButton/styles/pressed = SubResource( 16 )
 GridContainer/constants/hseparation = 12
 GridContainer/constants/vseparation = 12
 HSlider/icons/grabber = SubResource( 5 )

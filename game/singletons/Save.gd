@@ -9,7 +9,13 @@ var data = {
 func set_score(level : int, score : Dictionary):
 	if data["scores"].size() <= level:
 		data["scores"].resize(level + 1)
-	data["scores"][level] = score
+	if data["scores"][level] == null:
+		data["scores"][level] = score
+	else:
+		for key in data["scores"][level]:
+			if !score.has(key): continue
+			if score[key] < data["scores"][level][key]:
+				data["scores"][level][key] = score[key]
 	save_game()
 
 func set_viewed_tutorial(value = true):

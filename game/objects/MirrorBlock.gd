@@ -67,29 +67,34 @@ func _input(event):
 # from direction is 1 or 2 (Bottom or Top in LightStates) and returns the direction the light will bounce to
 func reflect_light(from_direction : int):
 	light_state |= from_direction
-	match [light_state, state]:
-		[LightStates.BOTTOM, States.RIGHT]: 
-			region_rect.position = Vector2(0, 64 + (32 * int(ungrabbable)))
-		[LightStates.BOTTOM, States.LEFT]: 
-			region_rect.position = Vector2(96, 64 + (32 * int(ungrabbable)))
-		[LightStates.TOP, States.RIGHT]: 
-			region_rect.position = Vector2(32, 64 + (32 * int(ungrabbable)))
-		[LightStates.TOP, States.LEFT]: 
-			region_rect.position = Vector2(128, 64 + (32 * int(ungrabbable)))
-		[LightStates.BOTH, States.RIGHT]: 
-			region_rect.position = Vector2(64, 64 + (32 * int(ungrabbable)))
-		[LightStates.BOTH, States.LEFT]: 
-			region_rect.position = Vector2(160, 64 + (32 * int(ungrabbable)))
-		_: 
-			region_rect.position.y = 32 * int(ungrabbable)
-			region_rect.position.x = 64 * int(state)
-			light_state = LightStates.NONE
 
 func die():
-	pass
+	set_light_state(-1)
+	light_state = 0
 
 func populate(_n, _a):
 	pass
 
 func set_light_state(light : int):
-	pass # TODO
+	var light_level = 4 - light
+	if light < 0:
+		light_state = LightStates.NONE
+	if light <= 0:
+		region_rect.position.y = 32 * int(ungrabbable)
+		region_rect.position.x = 64 * int(state)
+		return
+	var height = 64  * light_level
+	match [light_state, state]: 
+		[LightStates.BOTTOM, States.RIGHT]: 
+			region_rect.position = Vector2(0, height + (32 * int(ungrabbable)))
+		[LightStates.BOTTOM, States.LEFT]: 
+			region_rect.position = Vector2(96, height + (32 * int(ungrabbable)))
+		[LightStates.TOP, States.RIGHT]: 
+			region_rect.position = Vector2(32, height + (32 * int(ungrabbable)))
+		[LightStates.TOP, States.LEFT]: 
+			region_rect.position = Vector2(128, height + (32 * int(ungrabbable)))
+		[LightStates.BOTH, States.RIGHT]: 
+			region_rect.position = Vector2(64, height + (32 * int(ungrabbable)))
+		[LightStates.BOTH, States.LEFT]: 
+			region_rect.position = Vector2(160, height + (32 * int(ungrabbable)))
+		#_:

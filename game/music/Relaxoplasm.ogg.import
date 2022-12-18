@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Relaxoplasm.ogg-ce8113cedf0c6cf651f467827f372208.oggstr"
+
+[deps]
+
+source_file="res://music/Relaxoplasm.ogg"
+dest_files=[ "res://.import/Relaxoplasm.ogg-ce8113cedf0c6cf651f467827f372208.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0.75

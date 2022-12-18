@@ -7,6 +7,7 @@
 extents = Vector2( 10.5, 7 )
 
 [node name="MirrorBlock" type="Sprite" groups=["grid_object", "light", "mirror_blocks"]]
+z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( 1, -5 )
 region_enabled = true

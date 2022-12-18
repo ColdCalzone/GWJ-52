@@ -1,15 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Theme.tres" type="Theme" id=1]
 [ext_resource path="res://objects/menu/LevelButton.gd" type="Script" id=2]
 [ext_resource path="res://sprites/button_ghost.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 24, 0, 24, 24 )
 
 [node name="LevelButton" type="TextureButton"]
 margin_right = 12.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 48, 48 )
 theme = ExtResource( 1 )
-texture_normal = ExtResource( 3 )
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 2 )
+texture_hover = SubResource( 3 )
+texture_focused = SubResource( 2 )
 expand = true
 stretch_mode = 4
 script = ExtResource( 2 )

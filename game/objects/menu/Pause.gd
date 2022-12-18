@@ -13,6 +13,7 @@ onready var quit = $ColorRect/CenterContainer/VBoxContainer/Quit
 
 func _ready():
 	get_tree().paused = true
+	Music.play_music("paused")
 	tween.interpolate_property(bg, "color:a", 0, 0.5, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.interpolate_property(bg, "rect_position:x", 0, 235, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.interpolate_property(bg, "rect_size:x", 640, 405, 0.4, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)

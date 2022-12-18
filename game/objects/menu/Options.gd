@@ -9,7 +9,7 @@ func update_options():
 	$Fullscreen/Fullscreen.pressed = OS.window_fullscreen
 
 func _on_Button_toggled(button_pressed):
-	Settings.fullscreen = button_pressed
+	Settings.set_fullscreen(button_pressed)
 
 func _on_Music_value_changed(value):
 	Settings.mus_volume = value

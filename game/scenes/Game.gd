@@ -85,7 +85,7 @@ func _ready():
 	
 	if Levels.current_level == 0 and !Save.data["viewed_tutorial"]:
 		add_child(load("res://objects/menu/Tutorial.tscn").instance())
-		
+	Music.play_music("solving")
 
 func _input(event):
 	if event.is_action_pressed("fire_beams"):
@@ -103,8 +103,6 @@ func _input(event):
 			click_timer.stop()
 			for light in get_tree().get_nodes_in_group("light"):
 				light.die()
-			for mirror in get_tree().get_nodes_in_group("mirror_blocks"):
-				mirror.reflect_light(-99)
 			for ghost in get_tree().get_nodes_in_group("ghost"):
 				ghost.set_hit_by_beam(false)
 			for block in get_tree().get_nodes_in_group("half_block"):
@@ -120,6 +118,8 @@ func _input(event):
 	if event.is_action_pressed("pause"):
 		var pause = PAUSE.instance()
 		add_child(pause)
+		yield(pause, "child_exiting_tree")
+		Music.play_music("titlescreen")
 	if event.is_action_pressed("ui_end"):
 		win()
 

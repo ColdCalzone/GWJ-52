@@ -61,8 +61,6 @@ func populate(direction : int, grid_pos : Vector2):
 		if entity is Block:
 			queue_free()
 			return
-		if entity is HalfBlock:
-			entity.set_light(direction % 2)
 	self.grid_position = grid_pos
 	position = grid_position * grid.rect_scale
 	var next = self.duplicate()

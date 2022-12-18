@@ -12,7 +12,7 @@ onready var spotlight_count = $VBoxContainer/Spotlights/Label
 onready var spotlights = $VBoxContainer/Spotlights
 
 func _ready():
-	for i in range(Levels.levels.size()):
+	for i in range(Levels.levels.size() if Save.data["viewed_tutorial"] else 1):
 		var button = LEVEL_BUTTON.instance()
 		grid.add_child(button)
 		if i == 0: button.set_tutorial()
@@ -20,12 +20,14 @@ func _ready():
 		button.connect("pressed", self, "go_to_level", [i])
 		button.connect("mouse_entered", self, "highlight_level", [i])
 		button.connect("mouse_exited", self, "unhighlight_level")
+		
 
 func go_to_level(level : int):
 	Levels.current_level = level
 	TransitionManager.transition_to("res://scenes/Game.tscn")
 
 func highlight_level(level : int):
+	level_title.text = String(level) + ") " + Levels.levels[level]["name"]
 	if Save.data["scores"].size() <= level: return
 	var score = Save.data["scores"][level]
 	if score == null: return
@@ -41,6 +43,7 @@ func highlight_level(level : int):
 func unhighlight_level():
 	mirror_count.text = "--/--"
 	spotlight_count.text = "--/--"
+	level_title.text = ""
 	mirrors.modulate = UNHIGHLIGHTED
 	spotlights.modulate = UNHIGHLIGHTED
 

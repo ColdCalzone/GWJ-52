@@ -58,7 +58,6 @@ margin_right = 173.0
 margin_bottom = 19.0
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
-text = "#) LEVEL NAME"
 
 [node name="TextureRect" type="NinePatchRect" parent="VBoxContainer"]
 margin_top = 31.0

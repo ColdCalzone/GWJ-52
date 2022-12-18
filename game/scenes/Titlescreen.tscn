@@ -54,9 +54,9 @@ axis_stretch_vertical = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2"]
 margin_left = 232.0
-margin_top = 43.0
+margin_top = 49.0
 margin_right = 407.0
-margin_bottom = 150.0
+margin_bottom = 144.0
 rect_min_size = Vector2( 175, 0 )
 theme = ExtResource( 4 )
 custom_constants/separation = 16
@@ -64,19 +64,19 @@ alignment = 1
 
 [node name="Play" type="Button" parent="CenterContainer2/VBoxContainer"]
 margin_right = 175.0
-margin_bottom = 25.0
+margin_bottom = 21.0
 text = "Play"
 
 [node name="Options" type="Button" parent="CenterContainer2/VBoxContainer"]
-margin_top = 41.0
+margin_top = 37.0
 margin_right = 175.0
-margin_bottom = 66.0
+margin_bottom = 58.0
 text = "Options"
 
 [node name="Quit" type="Button" parent="CenterContainer2/VBoxContainer"]
-margin_top = 82.0
+margin_top = 74.0
 margin_right = 175.0
-margin_bottom = 107.0
+margin_bottom = 95.0
 text = "Quit"
 
 [connection signal="pressed" from="CenterContainer2/VBoxContainer/Play" to="." method="_on_Play_pressed"]

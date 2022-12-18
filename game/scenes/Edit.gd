@@ -4,6 +4,7 @@ onready var grid = $Grid
 onready var level = $HBoxContainer/SpinBox
 onready var width = $VBoxContainer/HBoxContainer/SpinBox
 onready var height = $VBoxContainer/HBoxContainer2/SpinBox
+onready var name_box = $HBoxContainer2/A
 
 onready var mirrors_allowed = $VBoxContainer2/HBoxContainer/SpinBox
 onready var spotlights_allowed = $VBoxContainer2/HBoxContainer2/SpinBox
@@ -90,6 +91,7 @@ func _on_Button_pressed():
 			{"grid_objects": objects,
 			"size": grid.size,
 			"allowed": {"mirror": mirrors_allowed.value,
-						"spotlight": spotlights_allowed.value}}
+						"spotlight": spotlights_allowed.value},
+			"name": name_box.value}
 		))
 		file.close()

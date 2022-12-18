@@ -1,1 +1,1 @@
-{"grid_objects":{"(1, 1)":"ghost","(3, 4)":"halfblock","(4, 3)":"halfblock","(4, 4)":"ghost","(3, 3)":"ghost"},"size":"(5, 5)","allowed":{"mirror":3,"spotlight":1}}
+{"grid_objects":{"(1, 1)":"ghost","(3, 4)":"halfblock","(4, 3)":"halfblock","(4, 4)":"ghost","(3, 3)":"ghost"},"size":"(5, 5)","allowed":{"mirror":3,"spotlight":1},"name":"Reflect on that"}

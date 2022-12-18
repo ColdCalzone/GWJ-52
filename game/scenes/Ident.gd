@@ -13,8 +13,8 @@ func _ready():
 	if OS.has_feature("web"):
 		Engine.set_iterations_per_second(30)
 		Engine.target_fps = 24
-	# Settings.load_config()
-	# FPS.hide_fps()
+	Settings.load_settings()
+	Save.load_game()
 	set_process(false)
 	yield(get_tree().create_timer(1.0), "timeout")
 	set_process(true)
@@ -31,9 +31,6 @@ func _ready():
 	tween.interpolate_property(label, "modulate:a", 1.0, 0.0, 0.75)
 	tween.start()
 	yield(tween, "tween_all_completed")
-	# if Settings.show_fps:
-	#	FPS.show_fps()
-	Save.load_game()
 	get_tree().change_scene("res://scenes/Titlescreen.tscn")
 
 var time = 0.0
@@ -41,7 +38,6 @@ var time = 0.0
 func _input(event):
 	if event is InputEventKey:
 		tween.stop_all()
-		Save.load_game()
 		get_tree().change_scene("res://scenes/Titlescreen.tscn")
 
 func _process(delta):
