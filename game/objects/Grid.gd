@@ -92,13 +92,13 @@ func snap_block_to_position(block : Node2D):
 			emit_signal("deleted")
 	if block is Spotlight:
 		if (block.position.x > 0 and block.position.x < size.x * rect_scale.x) and (
-			(block.position.y > size.y * rect_scale.y and block.position.y < (size.y + 1) * rect_scale.y) or
-			(block.position.y < 0 and block.position.y > -rect_scale.y)):
+			(block.position.y > size.y * rect_scale.y and block.position.y < (size.y + 2) * rect_scale.y) or
+			(block.position.y < 0 and block.position.y > -2 * rect_scale.y)):
 				block.change_direction(0 if block.position.y > 0 else 2)
 				snap_to_position(block)
 		elif (block.position.y >= 0 and block.position.y <= size.y * rect_scale.y) and (
-			(block.position.x < 0 and block.position.x > -rect_scale.x) or
-			(block.position.x > size.x * rect_scale.x and block.position.x < (size.x + 1) * rect_scale.x)):
+			(block.position.x < 0 and block.position.x > -2 * rect_scale.x) or
+			(block.position.x > size.x * rect_scale.x and block.position.x < (size.x + 2) * rect_scale.x)):
 				block.change_direction(3 if block.position.x > 0 else 1)
 				snap_to_position(block)
 		else:
@@ -111,8 +111,8 @@ func snap_block_to_position(block : Node2D):
 func calculate_grid_position(pos : Vector2):
 	pos = pos + rect_scale/2
 	var new_pos = Vector2 (
-			stepify(pos.x, rect_scale.x),
-			stepify(pos.y, rect_scale.y)
+			stepify(clamp(pos.x, -rect_scale.x, rect_scale.x * (size.x + 1)), rect_scale.x),
+			stepify(clamp(pos.y, -rect_scale.y, rect_scale.y * (size.y + 1)), rect_scale.y)
 		) - rect_scale/2
 	return [new_pos, (new_pos - rect_scale/2) / rect_scale]
 
