@@ -10,7 +10,7 @@ func set_hit_by_beam(is_hit : bool):
 	hit_by_beam = is_hit
 	if !hit_by_beam:
 		animation = "visible"
-		remove_from_group("heart")
+		if self in get_tree().get_nodes_in_group("heart"): remove_from_group("heart")
 	else:
 		animation = "die"
 

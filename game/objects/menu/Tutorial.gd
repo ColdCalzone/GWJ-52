@@ -1,3 +1,4 @@
+# Name is a misnomer now, just does lore.
 extends CenterContainer
 
 onready var timer = $Timer

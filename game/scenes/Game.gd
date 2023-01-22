@@ -87,6 +87,10 @@ func _ready():
 	
 	if Levels.current_level == 0 and !Save.data["viewed_tutorial"]:
 		add_child(load("res://objects/menu/Tutorial.tscn").instance())
+	if Levels.current_level == 0:
+		$Tutorial.visible = true
+	if Levels.current_level == 1:
+		$Tutorial2.visible = true
 	Music.play_music("solving")
 
 func _input(event):
@@ -144,6 +148,8 @@ func add_part(part):
 	new_part.being_dragged = true
 	dragged_parts.append(new_part)
 	update_totals()
+	if Levels.current_level == 0:
+		$Tutorial/Label3.visible = true
 
 func update_totals():
 	totals["mirror"] = get_tree().get_nodes_in_group("grabbable_mirror_blocks").size()

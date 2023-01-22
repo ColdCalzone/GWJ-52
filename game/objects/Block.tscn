@@ -4,7 +4,6 @@
 [ext_resource path="res://objects/Block.gd" type="Script" id=2]
 
 [node name="Block" type="Sprite" groups=["grid_object"]]
-z_index = 2
 texture = ExtResource( 1 )
 offset = Vector2( 1, -5 )
 region_enabled = true

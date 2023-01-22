@@ -94,12 +94,10 @@ func snap_block_to_position(block : Node2D):
 		if (block.position.x > 0 and block.position.x < size.x * rect_scale.x) and (
 			(block.position.y > size.y * rect_scale.y and block.position.y < (size.y + 2) * rect_scale.y) or
 			(block.position.y < 0 and block.position.y > -2 * rect_scale.y)):
-				block.change_direction(0 if block.position.y > 0 else 2)
 				snap_to_position(block)
 		elif (block.position.y >= 0 and block.position.y <= size.y * rect_scale.y) and (
-			(block.position.x < 0 and block.position.x > -2 * rect_scale.x) or
+			(block.position.x < 0 and block.position.x > -1 * rect_scale.x) or
 			(block.position.x > size.x * rect_scale.x and block.position.x < (size.x + 2) * rect_scale.x)):
-				block.change_direction(3 if block.position.x > 0 else 1)
 				snap_to_position(block)
 		else:
 			if grid.has(block.grid_position):
@@ -132,4 +130,12 @@ func snap_to_position(entity : Node2D):
 		grid[new_grid_pos] = entity
 		entity.position = new_pos
 		entity.grid_position = new_grid_pos
+		if entity is Spotlight:
+			print(entity.grid_position)
+			if entity.grid_position.y == -1 or entity.grid_position.y == size.y:
+				print("veritcal")
+				entity.change_direction(0 if entity.position.y > 0 else 2)
+			else:
+				print("horizontal")
+				entity.change_direction(3 if entity.position.x > 0 else 1)
 		
